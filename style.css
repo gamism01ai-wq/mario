@@ -11,6 +11,14 @@
   --light: #ffffff;
 }
 
+body.morning { background: #7ec8ff; }
+body.noon { background: #66b8ff; }
+body.evening { background: #ffb36b; }
+body.night { background: #1b2a4a; }
+
+body.night .title { color: #fff; text-shadow: 2px 2px 0 #000; }
+body.night .card { box-shadow: 6px 6px 0 #000; }
+
 * { box-sizing: border-box; }
 
 body {

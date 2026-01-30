@@ -12,6 +12,16 @@ const STORAGE_KEY = 'mario-todo-list';
 
 let todos = [];
 
+function setThemeByTime() {
+  const hour = new Date().getHours();
+  const body = document.body;
+  body.classList.remove('morning','noon','evening','night');
+  if (hour >= 5 && hour < 11) body.classList.add('morning');
+  else if (hour >= 11 && hour < 16) body.classList.add('noon');
+  else if (hour >= 16 && hour < 19) body.classList.add('evening');
+  else body.classList.add('night');
+}
+
 function save() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
 }
@@ -135,5 +145,7 @@ fileInput.addEventListener('change', async () => {
   }
 });
 
+setThemeByTime();
+setInterval(setThemeByTime, 10 * 60 * 1000);
 load();
 render();
