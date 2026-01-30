@@ -1,5 +1,6 @@
 const input = document.getElementById('todo-input');
 const addBtn = document.getElementById('add-btn');
+const dateInput = document.getElementById('todo-date');
 const list = document.getElementById('todo-list');
 const clearBtn = document.getElementById('clear-completed');
 const exportBtn = document.getElementById('export-json');
@@ -44,6 +45,10 @@ function render() {
     text.className = 'todo-text';
     text.textContent = todo.text;
 
+    const meta = document.createElement('span');
+    meta.className = 'todo-date';
+    meta.textContent = todo.date ? `📅 ${todo.date}` : '';
+
     const del = document.createElement('button');
     del.className = 'delete-btn';
     del.textContent = '❌';
@@ -54,7 +59,14 @@ function render() {
       render();
     });
 
-    li.appendChild(text);
+    const left = document.createElement('div');
+    left.style.display = 'flex';
+    left.style.flexDirection = 'column';
+    left.style.gap = '4px';
+    left.appendChild(text);
+    left.appendChild(meta);
+
+    li.appendChild(left);
     li.appendChild(del);
 
     li.addEventListener('click', () => {
@@ -71,8 +83,10 @@ function render() {
 function addTodo() {
   const value = input.value.trim();
   if (!value) return;
-  todos.unshift({ text: value, done: false, createdAt: Date.now() });
+  const date = dateInput?.value || '';
+  todos.unshift({ text: value, date, done: false, createdAt: Date.now() });
   input.value = '';
+  if (dateInput) dateInput.value = '';
   save();
   render();
   playCoin();
@@ -109,6 +123,7 @@ fileInput.addEventListener('change', async () => {
     if (Array.isArray(data)) {
       todos = data.map(item => ({
         text: String(item.text ?? ''),
+        date: item.date ?? '',
         done: Boolean(item.done),
         createdAt: item.createdAt ?? Date.now()
       })).filter(item => item.text);
