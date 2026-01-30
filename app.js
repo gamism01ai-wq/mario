@@ -47,7 +47,7 @@ function render() {
 
     const meta = document.createElement('span');
     meta.className = 'todo-date';
-    meta.textContent = todo.date ? `📅 ${todo.date}` : '';
+    meta.textContent = todo.date ? `📅 ${todo.date}` : '📅 未選日期';
 
     const del = document.createElement('button');
     del.className = 'delete-btn';

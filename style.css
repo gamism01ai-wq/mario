@@ -139,6 +139,7 @@ input[type="date"] {
   margin-bottom: 10px;
   background: #f8f8f8;
   cursor: pointer;
+  gap: 10px;
 }
 
 .todo-item.done {
