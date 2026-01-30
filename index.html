@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mario Todo List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="sky">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+  </div>
+
+  <main class="wrap">
+    <header class="title">
+      <h1>Mario Todo</h1>
+      <p class="subtitle">新增 / 完成 / 刪除 / 分享（匯出 JSON）</p>
+    </header>
+
+    <section class="card">
+      <div class="input-row">
+        <input id="todo-input" type="text" placeholder="輸入你的待辦事項" autocomplete="off" />
+        <button id="add-btn" class="btn btn-red">+ 新增</button>
+      </div>
+      <div class="actions">
+        <button id="clear-completed" class="btn btn-blue">清除已完成</button>
+        <button id="export-json" class="btn btn-yellow">匯出 JSON</button>
+        <button id="import-json" class="btn btn-green">匯入 JSON</button>
+        <input id="file-input" type="file" accept="application/json" hidden />
+      </div>
+
+      <ul id="todo-list" class="todo-list"></ul>
+
+      <footer class="hint">
+        <span>提示：</span> 點擊事項可以標記完成；點擊 ❌ 可刪除。
+      </footer>
+    </section>
+
+    <section class="ground">
+      <div class="brick"></div>
+      <div class="brick"></div>
+      <div class="brick"></div>
+      <div class="question">?</div>
+      <div class="brick"></div>
+      <div class="brick"></div>
+    </section>
+  </main>
+
+  <audio id="coin-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-bonus-229.mp3" preload="auto"></audio>
+  <script src="app.js"></script>
+</body>
+</html>
